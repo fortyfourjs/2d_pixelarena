@@ -1,0 +1,50 @@
+[gd_scene load_steps=7 format=3 uid="uid://yshg0ioysodj"]
+
+[ext_resource type="PackedScene" uid="uid://nangccwb0cki" path="res://Player.tscn" id="1_glv2v"]
+[ext_resource type="Script" uid="uid://ckoleugb6yr2r" path="res://main.gd" id="1_uu6xs"]
+[ext_resource type="PackedScene" uid="uid://brjhghoby0ahk" path="res://Enemy.tscn" id="2_cm0pq"]
+[ext_resource type="PackedScene" uid="uid://cdr4kuwf7dusk" path="res://Bullet.tscn" id="3_fos0i"]
+[ext_resource type="PackedScene" uid="uid://crht1cn7ajr8x" path="res://enemy_bullet.tscn" id="4_fos0i"]
+[ext_resource type="Texture2D" uid="uid://dj2jqg7o55s6k" path="res://Background.png" id="6_3dxm6"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_uu6xs")
+enemy_scene = ExtResource("2_cm0pq")
+bullet_scene = ExtResource("3_fos0i")
+enemy_bullet_scene = ExtResource("4_fos0i")
+
+[node name="Player" parent="." instance=ExtResource("1_glv2v")]
+
+[node name="SpawnTimer" type="Timer" parent="."]
+autostart = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HudLabel" type="Label" parent="CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="GameOverPanel" type="Panel" parent="CanvasLayer"]
+visible = false
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ReplayButton" type="Button" parent="CanvasLayer/GameOverPanel"]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+
+[node name="Healthbar" type="ProgressBar" parent="CanvasLayer"]
+offset_right = 4.0
+offset_bottom = 27.0
+max_value = 5.0
+value = 5.0
+
+[node name="TimeLAbel" type="Label" parent="CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -10
+scale = Vector2(2.275, 2.275)
+texture = ExtResource("6_3dxm6")
